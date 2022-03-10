@@ -1,14 +1,41 @@
 package lk.ijse.dep8.controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 public class HomeFormController {
-    public void btnArray_OnAction(ActionEvent event) {
+    public AnchorPane root;
+    public void btnArray_OnAction(ActionEvent event) throws IOException {
+        loadManageCustomerForm(true);
     }
 
-    public void btnCollection_OnAction(ActionEvent event) {
+    public void btnCollection_OnAction(ActionEvent event) throws IOException {
+        loadManageCustomerForm(false);
     }
 
     public void btnDB_OnAction(ActionEvent event) {
     }
+private void loadManageCustomerForm(boolean asAnArray) throws IOException {
+    FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/ManageCustomerForm.fxml"));
+    AnchorPane root = fxmlLoader.load();
+
+    Scene scene= new Scene(root);
+    Stage stage= new Stage();
+    stage.setScene(scene);
+
+    ManageCustomerFormController controller = fxmlLoader.getController();
+
+    stage.setTitle("Manage Customer Form : "+((asAnArray)? "Bean array DS" : "Bean collection DS"));
+    stage.setResizable(false);
+    stage.initModality(Modality.APPLICATION_MODAL);
+    stage.initOwner(this.root.getScene().getWindow());
+    stage.show();
+    stage.centerOnScreen();
+
+}
 }
