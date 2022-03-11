@@ -45,6 +45,18 @@ loadCustomers();
             });
             return;
         }
+        Platform.runLater(()->{
+            tblCustomers.getScene().getWindow().setOnCloseRequest(event ->
+            {
+                try{
+                    if(connection!=null && !connection.isClosed()){
+                        connection.close();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+        });
 
     }
 
@@ -53,13 +65,14 @@ loadCustomers();
         ResultSet rst = stm.executeQuery("SELECT * FROM  customer");
 
         while(rst.next()){
-            tblCustomers.getItems().add(new CustomerTM(rst.getString("id")
-            rst.getString("name")
+            tblCustomers.getItems().add(new CustomerTM(rst.getString("id"),
+            rst.getString("name"),
             rst.getString("address")));
         }
     }
 
     public void btnShowCustomerReport_OnAction(ActionEvent event) {
+
     }
 
     public void btnLoadData_OnAction(ActionEvent event) {
