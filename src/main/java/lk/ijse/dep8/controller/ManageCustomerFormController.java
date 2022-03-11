@@ -79,7 +79,7 @@ public class ManageCustomerFormController {
 
     private JasperPrint getJasperPrint() {
         try {
-            JasperDesign jasperDesign = JRXmlLoader.load(this.getClass().getResourceAsStream("/report/customer-report1.jrxml"));
+            JasperDesign jasperDesign = JRXmlLoader.load(this.getClass().getResourceAsStream("/report/Customer-report-for-jasper-mytest2.jrxml"));
 
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 
