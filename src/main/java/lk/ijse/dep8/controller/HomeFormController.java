@@ -35,14 +35,14 @@ public class HomeFormController {
 private void loadManageCustomerForm(boolean asAnArray) throws IOException {
     FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/ManageCustomerForm.fxml"));
     AnchorPane root = fxmlLoader.load();
-
-    Scene scene= new Scene(root);
-    Stage stage= new Stage();
+    Scene scene = new Scene(root);
+    Stage stage = new Stage();
     stage.setScene(scene);
 
-    ManageCustomerFormController controller = fxmlLoader.getController();
+    ManageCustomerFormController ctrl = fxmlLoader.getController();
+    ctrl.initData(asAnArray);
 
-    stage.setTitle("Manage Customer Form : "+((asAnArray)? "Bean array DS" : "Bean collection DS"));
+    stage.setTitle("Manage Customer Form: " + ((asAnArray) ? "Bean Array DS" : "Bean Collection DS"));
     stage.setResizable(false);
     stage.initModality(Modality.APPLICATION_MODAL);
     stage.initOwner(this.root.getScene().getWindow());

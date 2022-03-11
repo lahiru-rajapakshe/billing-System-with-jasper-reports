@@ -19,10 +19,10 @@ public class DBConnectionTest {
 //    void tearDown() {
 //    }
 
-    @Test
-    void getInstance() {
-        assertNotNull(DBConnection.getInstance());
-        assertEquals(DBConnection.getInstance(),DBConnection.getInstance());
-    }
+//    @Test
+//    void getInstance() {
+//        assertNotNull(DBConnection.getInstance());
+//        assertEquals(DBConnection.getInstance(),DBConnection.getInstance());
+//    }
 
 }

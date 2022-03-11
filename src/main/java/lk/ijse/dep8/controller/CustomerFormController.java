@@ -37,7 +37,7 @@ public class CustomerFormController {
         tblCustomers.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("name"));
         tblCustomers.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("address"));
 
-        Class.forName("com.mysql.cj.jdbc.");
+        Class.forName("com.mysql.cj.jdbc");
         try {
             String url = String.format("jdbc:mysql://%s:%s:/%s", prop.getProperty("app.ip"), prop.getProperty("app.port"), prop.getProperty("app.database"));
             this.connection= DriverManager.getConnection(url,prop.getProperty("app.username"),prop.getProperty("app.password"));
@@ -78,7 +78,7 @@ loadCustomers();
 
     public void btnShowCustomerReport_OnAction(ActionEvent event) {
         try {
-            JasperDesign jasperDesign = JRXmlLoader.load(this.getClass().getResourceAsStream("/report/customer-report2.jrxml"));
+            JasperDesign jasperDesign = JRXmlLoader.load(this.getClass().getResourceAsStream("/report/Customer-report-for-jasper-mytest.jrxml"));
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 
             HashMap<String, Object> params = new HashMap<>();
